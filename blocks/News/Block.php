@@ -6,6 +6,7 @@ defined('ABSPATH') || exit;
 
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
+use StarterKit\Handlers\PostTypes;
 use StarterKit\Handlers\Blocks\BlockAbstract;
 use StarterKit\Helper\Config;
 use StarterKit\Helper\NotFoundException;
@@ -122,7 +123,7 @@ class Block extends BlockAbstract
         $requestedPage = $requestData['page'] ?? 1;
         //$nonce         = $requestData['nonce'];
 
-        $metaPrefix = Config::get('settingsPrefix') . Config::get('postTypes/NewsID') . '_';
+        $metaPrefix = Config::get('settingsPrefix') . PostTypes\News::getKey() . '_';
 
         $args = [];
 

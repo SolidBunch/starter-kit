@@ -13,6 +13,16 @@ use StarterKit\Helper\Config;
  */
 class Portfolio
 {
+    public static function getKey()
+    {
+        return 'portfolio';
+    }
+
+    public static function getRewriteSlug()
+    {
+        return 'portfolio';
+    }
+
     /**
      * Register post type
      *
@@ -21,7 +31,7 @@ class Portfolio
     public static function registerPostType(): void
     {
         register_post_type(
-            Config::get('postTypes/PortfolioID'),
+            static::getKey(),
             [
                 'label'             => esc_html__('Portfolio', 'starter-kit'),
                 'description'       => '',
@@ -33,7 +43,7 @@ class Portfolio
                 'capability_type'   => 'post',
                 'hierarchical'      => false,
                 'supports'          => ['title', 'editor', 'thumbnail', 'page-attributes'],
-                'rewrite'           => ['slug' => Config::get('postTypes/PortfolioSlug')],
+                'rewrite'           => ['slug' => static::getRewriteSlug()],
                 'has_archive'       => true,
                 'query_var'         => false,
                 'menu_position'     => 5,

@@ -11,9 +11,9 @@
       "title": "Page without Title"
     },
     {
-      "name": "single-doc-pages",
-      "title": "Single Doc Pages",
-      "postTypes": ["single-doc-pages"]
+      "name": "single-doc-page",
+      "title": "Single Doc Page",
+      "postTypes": ["doc-page"]
     }
   ]
 }

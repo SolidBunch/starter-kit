@@ -9,6 +9,7 @@ use Psr\Container\NotFoundExceptionInterface;
 use StarterKit\Helper\Config;
 use StarterKit\Helper\NotFoundException;
 use StarterKit\Helper\Utils;
+use StarterKit\Handlers\PostTypes;
 
 /**
  * Repository for post type objects
@@ -17,9 +18,9 @@ use StarterKit\Helper\Utils;
  */
 class PricingRepository extends WpPostRepositoryAbstract
 {
-    public static function getPostTypeID(): string
+    public static function getPostTypeKey(): string
     {
-        return Config::get('postTypes/PricingID');
+        return PostTypes\Pricing::getKey();
     }
 
     /**
@@ -37,7 +38,7 @@ class PricingRepository extends WpPostRepositoryAbstract
     {
         $posts  = static::get($args);
         $values = [];
-        $metaPrefix = Config::get('settingsPrefix') . Config::get('postTypes/PricingID') . '_';
+        $metaPrefix = Config::get('settingsPrefix') . PostTypes\Pricing::getKey() . '_';
 
         foreach ($posts as $post) {
             /** @var WP_Post $post */

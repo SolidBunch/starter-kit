@@ -2,17 +2,22 @@
 
 namespace StarterKit\Handlers\PostTypes;
 
-use StarterKit\Helper\Config;
-
 defined('ABSPATH') || exit;
 
+use StarterKit\Helper\Config;
+
 /**
- * Post type class
+ * Services post type
  *
  * @package    Starter Kit
  */
-class TeamMembers
+class Service
 {
+    public static function getKey()
+    {
+        return 'service';
+    }
+
     /**
      * Register post type
      * Reference type without frontend output
@@ -22,9 +27,9 @@ class TeamMembers
     public static function registerPostType(): void
     {
         register_post_type(
-            Config::get('postTypes/TeamMembersID'),
+            static::getKey(),
             [
-                'label'             => esc_html__('Team Members', 'starter-kit'),
+                'label'             => esc_html__('Services', 'starter-kit'),
                 'description'       => '',
                 'public'            => false,
                 'show_ui'           => true,
@@ -33,9 +38,9 @@ class TeamMembers
                 'show_in_nav_menus' => true,
                 'capability_type'   => 'post',
                 'hierarchical'      => false,
-                'supports'          => ['title', 'editor', 'thumbnail'],
+                'supports'          => ['title', 'thumbnail'],
                 'rewrite'           => false,
-                'has_archive'       => false,
+                'has_archive'       => true,
                 'query_var'         => false,
                 'menu_position'     => 5,
                 'capabilities'      => [
@@ -50,19 +55,19 @@ class TeamMembers
                     'read_post'           => 'edit_pages',
                 ],
                 'labels'            => [
-                    'name'               => esc_html__('Team Members', 'starter-kit'),
-                    'singular_name'      => esc_html__('Team Member', 'starter-kit'),
-                    'menu_name'          => esc_html__('Team Members', 'starter-kit'),
-                    'add_new'            => esc_html__('Add Team Member', 'starter-kit'),
-                    'add_new_item'       => esc_html__('Add New Team Member', 'starter-kit'),
-                    'all_items'          => esc_html__('All Team Members', 'starter-kit'),
-                    'edit_item'          => esc_html__('Edit Team Member', 'starter-kit'),
-                    'new_item'           => esc_html__('New Team Member', 'starter-kit'),
-                    'view_item'          => esc_html__('View Team Member', 'starter-kit'),
-                    'search_items'       => esc_html__('Search Team Members', 'starter-kit'),
-                    'not_found'          => esc_html__('No Team Members Found', 'starter-kit'),
-                    'not_found_in_trash' => esc_html__('No Team Members Found in Trash', 'starter-kit'),
-                    'parent_item_colon'  => esc_html__('Parent Team Member:', 'starter-kit'),
+                    'name'               => esc_html__('Services', 'starter-kit'),
+                    'singular_name'      => esc_html__('Service Item', 'starter-kit'),
+                    'menu_name'          => esc_html__('Services', 'starter-kit'),
+                    'add_new'            => esc_html__('Add Service', 'starter-kit'),
+                    'add_new_item'       => esc_html__('Add Service', 'starter-kit'),
+                    'all_items'          => esc_html__('All Services', 'starter-kit'),
+                    'edit_item'          => esc_html__('Edit Service', 'starter-kit'),
+                    'new_item'           => esc_html__('New Service', 'starter-kit'),
+                    'view_item'          => esc_html__('View Service', 'starter-kit'),
+                    'search_items'       => esc_html__('Search Service', 'starter-kit'),
+                    'not_found'          => esc_html__('No Service Found', 'starter-kit'),
+                    'not_found_in_trash' => esc_html__('No Service Found in Trash', 'starter-kit'),
+                    'parent_item_colon'  => esc_html__('Parent Service:', 'starter-kit'),
                 ],
             ]
         );

@@ -31,8 +31,8 @@ class AdminColumns
 
     public static function addNewsCategoryFilter($currentPostType, $which): void
     {
-        $postType = Config::get('postTypes/NewsID');
-        $taxonomy = Config::get('postTypes/NewsTaxonomyID');
+        $postType = PostTypes\News::getKey();
+        $taxonomy = PostTypes\News::getCategoryKey();
 
         if ($currentPostType == $postType) {
             wp_dropdown_categories([

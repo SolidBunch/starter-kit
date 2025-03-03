@@ -7,6 +7,7 @@ defined('ABSPATH') || exit;
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 use StarterKit\Helper\Config;
+use StarterKit\Handlers\PostTypes;
 
 /**
  * Post type meta data handler
@@ -17,10 +18,10 @@ class Pricing
 {
     public static function make(): void
     {
-        $metaPrefix = Config::get('settingsPrefix') . Config::get('postTypes/PricingID') . '_';
+        $metaPrefix = Config::get('settingsPrefix') . PostTypes\Pricing::getKey() . '_';
 
         Container::make('post_meta', __('Pricing Package Data', 'starter-kit'))
-            ->where('post_type', '=', Config::get('postTypes/PricingID'))
+            ->where('post_type', '=', PostTypes\Pricing::getKey())
             ->set_priority('default')
             ->add_fields([
                              Field::make('text', $metaPrefix . 'price', __('Price', 'starter-kit'))

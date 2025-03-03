@@ -14,8 +14,18 @@ use StarterKit\Helper\NotFoundException;
  *
  * @package    Starter Kit
  */
-class DocPages
+class DocPage
 {
+    public static function getKey()
+    {
+        return 'doc-page';
+    }
+
+    public static function getRewriteSlug()
+    {
+        return 'doc';
+    }
+
     /**
      * Register post type
      *
@@ -28,7 +38,7 @@ class DocPages
     public static function registerPostType(): void
     {
         register_post_type(
-            Config::get('postTypes/DocPagesID'),
+            static::getKey(),
             [
                 'label'             => esc_html__('DocPages', 'starter-kit'),
                 'description'       => '',
@@ -44,11 +54,11 @@ class DocPages
                     'editor',
                     'author',
                     'revisions',
-                    'page-attributes'
+                    'page-attributes',
                 ],
                 'rewrite'           => [
-                    'slug' => Config::get('postTypes/DocPagesSlug'),
-                    'with_front' => false,
+                    'slug'         => static::getRewriteSlug(),
+                    'with_front'   => false,
                     'hierarchical' => true,
                 ],
                 'has_archive'       => false,
@@ -69,7 +79,7 @@ class DocPages
                 ],
                 'labels'            => [
                     'name'               => esc_html__('DocPages', 'starter-kit'),
-                    'singular_name'      => esc_html__('DocPage Item', 'starter-kit'),
+                    'singular_name'      => esc_html__('DocPage', 'starter-kit'),
                     'menu_name'          => esc_html__('DocPages', 'starter-kit'),
                     'add_new'            => esc_html__('Add DocPage', 'starter-kit'),
                     'add_new_item'       => esc_html__('Add DocPage', 'starter-kit'),

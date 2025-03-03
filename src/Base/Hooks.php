@@ -56,9 +56,9 @@ class Hooks
         add_action('init', [Handlers\PostTypes\News::class, 'registerTagTaxonomy'], 5);
         add_action('init', [Handlers\PostTypes\Portfolio::class, 'registerPostType'], 5);
         add_action('init', [Handlers\PostTypes\Pricing::class, 'registerPostType'], 5);
-        add_action('init', [Handlers\PostTypes\DocPages::class, 'registerPostType'], 5);
-        add_action('init', [Handlers\PostTypes\TeamMembers::class, 'registerPostType'], 5);
-        add_action('init', [Handlers\PostTypes\Services::class, 'registerPostType'], 5);
+        add_action('init', [Handlers\PostTypes\DocPage::class, 'registerPostType'], 5);
+        add_action('init', [Handlers\PostTypes\TeamMember::class, 'registerPostType'], 5);
+        add_action('init', [Handlers\PostTypes\Service::class, 'registerPostType'], 5);
 
         /************************************
          *            Meta Fields

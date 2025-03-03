@@ -7,6 +7,7 @@ defined('ABSPATH') || exit;
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 use StarterKit\Helper\Config;
+use StarterKit\Handlers\PostTypes;
 
 /**
  * Post type settings handler
@@ -30,7 +31,7 @@ class NewsSettings
             __('News Settings', 'starter-kit') // desc
         );
 
-        $container->set_page_parent('edit.php?post_type=' . Config::get('postTypes/NewsID'));
+        $container->set_page_parent('edit.php?post_type=' . PostTypes\News::getKey());
         $container->set_page_menu_title('News Settings');
         $container->set_icon('dashicons-carrot');
 

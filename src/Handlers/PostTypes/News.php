@@ -16,6 +16,26 @@ use StarterKit\Helper\NotFoundException;
  */
 class News
 {
+    public static function getKey()
+    {
+        return 'news';
+    }
+
+    public static function getRewriteSlug()
+    {
+        return 'news';
+    }
+
+    public static function getCategoryKey()
+    {
+        return 'news-category';
+    }
+
+    public static function getTagKey()
+    {
+        return 'news-tag';
+    }
+
     /**
      * Register post type
      *
@@ -28,7 +48,7 @@ class News
     public static function registerPostType(): void
     {
         register_post_type(
-            Config::get('postTypes/NewsID'),
+            static::getKey(),
             [
                 'label'             => esc_html__('News', 'starter-kit'),
                 'description'       => '',
@@ -49,7 +69,7 @@ class News
                     'page-attributes',
                 ],
                 'taxonomies'        => ['news-category'],
-                'rewrite'           => ['slug' => Config::get('postTypes/NewsSlug')],
+                'rewrite'           => ['slug' => static::getRewriteSlug()],
                 'has_archive'       => true,
                 'query_var'         => false,
                 'menu_position'     => 5,
@@ -93,8 +113,8 @@ class News
     public static function registerCategoryTaxonomy(): void
     {
         register_taxonomy(
-            Config::get('postTypes/NewsTaxonomyID'),
-            Config::get('postTypes/NewsID'),
+            static::getCategoryKey(),
+            static::getKey(),
             [
                 'public'            => true,
                 'show_ui'           => true,
@@ -133,8 +153,8 @@ class News
     public static function registerTagTaxonomy(): void
     {
         register_taxonomy(
-            Config::get('postTypes/NewsTagID'),
-            Config::get('postTypes/NewsID'),
+            static::getTagKey(),
+            static::getKey(),
             [
                 'public'            => true,
                 'show_ui'           => true,

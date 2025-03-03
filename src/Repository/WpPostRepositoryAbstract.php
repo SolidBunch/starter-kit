@@ -14,7 +14,7 @@ use WP_Post;
  */
 abstract class WpPostRepositoryAbstract implements WpPostRepositoryInterface
 {
-    abstract public static function getPostTypeID(): string;
+    abstract public static function getPostTypeKey(): string;
 
     /**
      * Get posts WP_Query by params
@@ -26,7 +26,7 @@ abstract class WpPostRepositoryAbstract implements WpPostRepositoryInterface
     public static function getQuery($args): WP_Query
     {
         $defaults = [
-            'post_type'      => static::getPostTypeID(),
+            'post_type'      => static::getPostTypeKey(),
             'post_status'    => 'publish',
             'posts_per_page' => -1,
             'orderby'        => [

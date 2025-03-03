@@ -8,22 +8,23 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use StarterKit\Helper\Config;
 use StarterKit\Helper\NotFoundException;
+use StarterKit\Handlers\PostTypes;
 
 /**
  * Repository for post type objects
  *
  * @package    Starter Kit
  */
-class DocPagesRepository extends WpPostRepositoryAbstract
+class DocPageRepository extends WpPostRepositoryAbstract
 {
     /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      * @throws NotFoundException
      */
-    public static function getPostTypeID(): string
+    public static function getPostTypeKey(): string
     {
-        return Config::get('postTypes/DocPagesID');
+        return PostTypes\DocPage::getKey();
     }
 
     /**
@@ -50,7 +51,7 @@ class DocPagesRepository extends WpPostRepositoryAbstract
 
             $values[$post->post_parent][$post->ID] = [
                 'title' => $post->post_title,
-                'link' => get_permalink($post->ID),
+                'link'  => get_permalink($post->ID),
             ];
         }
 

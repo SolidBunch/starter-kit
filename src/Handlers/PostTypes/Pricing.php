@@ -16,6 +16,16 @@ use StarterKit\Helper\NotFoundException;
  */
 class Pricing
 {
+    public static function getKey()
+    {
+        return 'pricing';
+    }
+
+    public static function getRewriteSlug()
+    {
+        return 'pricing';
+    }
+
     /**
      * Register post type
      *
@@ -28,7 +38,7 @@ class Pricing
     public static function registerPostType(): void
     {
         register_post_type(
-            Config::get('postTypes/PricingID'),
+            static::getKey(),
             [
                 'label'             => esc_html__('Pricing', 'starter-kit'),
                 'description'       => '',
@@ -40,7 +50,7 @@ class Pricing
                 'capability_type'   => 'post',
                 'hierarchical'      => false,
                 'supports'          => ['title', 'editor', 'page-attributes'],
-                'rewrite'           => ['slug' => Config::get('postTypes/PortfolioSlug')],
+                'rewrite'           => ['slug' => static::getRewriteSlug()],
                 'has_archive'       => false,
                 'query_var'         => false,
                 'menu_position'     => 5,

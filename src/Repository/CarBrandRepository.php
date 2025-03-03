@@ -9,7 +9,7 @@ defined('ABSPATH') || exit;
  *
  * @package    Starter Kit
  */
-class CarBrandsRepository
+class CarBrandRepository
 {
     /**
      * Get Car Brands array

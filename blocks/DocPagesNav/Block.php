@@ -8,7 +8,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use StarterKit\Handlers\Blocks\BlockAbstract;
 use StarterKit\Helper\NotFoundException;
-use StarterKit\Repository\DocPagesRepository;
+use StarterKit\Repository\DocPageRepository;
 use Throwable;
 
 /**
@@ -71,7 +71,7 @@ class Block extends BlockAbstract
             ],
         ];
 
-        $templateData['docPages'] = DocPagesRepository::getAllHierarchicallyWithLinks($args);
+        $templateData['docPages'] = DocPageRepository::getAllHierarchicallyWithLinks($args);
 
         return $this->loadBlockView('layout', $templateData);
     }

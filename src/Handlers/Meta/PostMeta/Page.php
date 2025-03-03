@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 use StarterKit\Helper\Config;
-use StarterKit\Repository\CarBrandsRepository;
+use StarterKit\Repository\CarBrandRepository;
 
 /**
  * Post type meta data handler
@@ -20,7 +20,7 @@ class Page
     {
         $metaPrefix = Config::get('settingsPrefix') . 'page_';
 
-        $carBrands = CarBrandsRepository::getCarBrands();
+        $carBrands = CarBrandRepository::getCarBrands();
 
         Container::make('post_meta', __('Page Settings', 'starter-kit'))
                  ->where('post_type', '=', 'page')
